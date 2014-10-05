@@ -10,7 +10,10 @@ int h = 50;
 // declare variables
 // --------------------------------------------
 // put your code inside here
-int totalScore = 0;
+int totalScore = 500;
+int r0 ;
+int r1 ;
+int r2 ;
 
 // --------------------------------------------
 
@@ -45,11 +48,32 @@ void draw() {
   if (button) {
     if (!rolling){
       rolling = true;
+      
       // start rolling
       // -------------------------------------------------
       // put your code inside here
       
+      totalScore = totalScore -50;
       
+      r0 = int(random(5));
+      r1 = int(random(5));
+      r2 = int(random(5));
+      machine.setSlotFruit (0,r0);
+      machine.setSlotFruit (1,r1);
+      machine.setSlotFruit (2,r2);
+      
+      //let the probability of 777 is 10%
+      if (r0 == 0 && r1 == 0 && r2 == 0){
+      
+          int result = 0;
+          result = machine.probability( 0.1 );
+          if (result == 0){
+          rolling = true;       
+                          }
+          else {
+            rolling =false;
+                }
+          }        
       // -------------------------------------------------
     }
     machine.roll();
@@ -62,11 +86,27 @@ void draw() {
       // stop rolling
       // -------------------------------------------------
       // put your code inside here
+      r0 = int(random(5));
+      r1 = int(random(5));
+      r2 = int(random(5));
+      machine.setSlotFruit(0,r0);
+      machine.setSlotFruit(1,r1);
+      machine.setSlotFruit(2,r2);
+            
+      int a = machine.getSlotScore(r0);
+      int b = machine.getSlotScore(r1);
+      int c = machine.getSlotScore(r2);
+      //totalScore= totalScore + a + b + c;(if the same fruit doesn't double.)
+            
+      int m = machine.getFruitCount(0);
+      int n = machine.getFruitCount(1);
+      int o = machine.getFruitCount(2);
+      int p = machine.getFruitCount(3);
+      int q = machine.getFruitCount(4);
+      int r = machine.getFruitCount(5);
       
- 
- 
- 
-      
+      totalScore = totalScore + 60*m*m + 10*n*n + 20*o*o + 30*p*p + 40*q*q + 50*r*r;
+      //if the same fruit double      
       // -------------------------------------------------
     }
     machine.stop();
@@ -83,10 +123,3 @@ void mousePressed() {
     button = !button;
   }  
 }
-
-
-
-
-
-
-
