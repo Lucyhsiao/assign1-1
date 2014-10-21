@@ -55,12 +55,13 @@ void draw() {
       
       totalScore = totalScore -50;
       
-      r0 = int(random(5));
-      r1 = int(random(5));
-      r2 = int(random(5));
+      r0 = int(random(6));
+      r1 = int(random(6));
+      r2 = int(random(6));
       machine.setSlotFruit (0,r0);
       machine.setSlotFruit (1,r1);
       machine.setSlotFruit (2,r2);
+     
       
       //let the probability of 777 is 10%
       if (r0 == 0 && r1 == 0 && r2 == 0){
@@ -86,9 +87,9 @@ void draw() {
       // stop rolling
       // -------------------------------------------------
       // put your code inside here
-      r0 = int(random(5));
-      r1 = int(random(5));
-      r2 = int(random(5));
+      r0 = int(random(6));
+      r1 = int(random(6));
+      r2 = int(random(6));
       machine.setSlotFruit(0,r0);
       machine.setSlotFruit(1,r1);
       machine.setSlotFruit(2,r2);
@@ -123,17 +124,3 @@ void mousePressed() {
     button = !button;
   }  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
